@@ -1,5 +1,5 @@
 import express from 'express';
-import { queryExistingClockIn } from '../../database/clock/queryExistingClockin';
+import { queryExistingClockIn } from '../../database/clock/queryExistingClockIn';
 import {
 	handleErrors,
 	createResponseObject,

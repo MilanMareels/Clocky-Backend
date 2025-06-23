@@ -6,8 +6,8 @@ import {
 	handleErrors,
 } from '../../common/common';
 import { ConflictError } from '../../errors/error';
-import { queryExistingClockIn } from '../../database/clock/queryExistingClockin';
 import { queryAddClockIn } from '../../database/clock/queryClockIn';
+import { queryExistingClockIn } from '../../database/clock/queryExistingClockIn';
 
 const router = express.Router();
 

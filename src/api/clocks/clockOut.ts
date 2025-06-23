@@ -6,7 +6,7 @@ import {
 	handleErrors,
 } from '../../common/common';
 
-import { queryExistingClockIn } from '../../database/clock/queryExistingClockin';
+import { queryExistingClockIn } from '../../database/clock/queryExistingClockIn';
 import { queryClockOut } from '../../database/clock/queryClockOut';
 import { NotFoundError } from '../../errors/error';
 
