@@ -51,6 +51,8 @@ export const findUser = async (
 ): Promise<User> => {
 	const user: User = (await queryUser(username, code)) as User;
 	if (!user)
-		throw new NotFoundError('User niet gevonden of gegevens zijn fout!');
+		throw new NotFoundError(
+			'Gebruiker niet gevonden of onjuiste inloggegevens. Controleer je gebruikersnaam en wachtwoord en probeer het opnieuw.',
+		);
 	return user;
 };
