@@ -5,11 +5,11 @@ import { queryRaport } from '../../database/clock/queryRaport';
 
 const router = express.Router();
 
-router.get('/clock/:username', async (req, res) => {
+router.get('/clock/:username/:code', async (req, res) => {
 	try {
-		const { username } = req.params;
+		const { username, code } = req.params;
 
-		const records = await queryRaport(username);
+		const records = await queryRaport(username, code);
 
 		return createResponseObject(200, records, res);
 	} catch (error) {
