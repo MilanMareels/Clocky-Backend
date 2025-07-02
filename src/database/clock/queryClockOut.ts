@@ -8,6 +8,7 @@ const client = new MongoClient(uri);
 export const queryClockOut = async (
 	username: string,
 	code: string,
+	project: string,
 	date: string,
 	clockOut: string,
 ) => {
@@ -16,7 +17,7 @@ export const queryClockOut = async (
 			.db(database)
 			.collection('Clock')
 			.updateOne(
-				{ username, code, date, clockOut: null },
+				{ username, code, project, date, clockOut: null },
 				{ $set: { clockOut } },
 			);
 

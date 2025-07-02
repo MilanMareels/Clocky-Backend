@@ -13,17 +13,22 @@ const router = express.Router();
 
 router.post('/clockin', async (req: any, res) => {
 	try {
-		const { username, code } = req.body;
+		const { username, code, project } = req.body;
 
 		await findUser(username, code);
 
 		const date = new Date().toISOString().split('T')[0];
 
-		const exists = await queryExistingClockIn(username, code, date);
+		const exists = await queryExistingClockIn(
+			username,
+			code,
+			project,
+			date,
+		);
 		if (exists) throw new ConflictError('Je bent al ingeklokt vandaag');
 
 		const clockIn = new Date().toISOString();
-		await queryAddClockIn(username, code, date, clockIn);
+		await queryAddClockIn(username, code, project, date, clockIn);
 
 		return createResponseObject(
 			200,

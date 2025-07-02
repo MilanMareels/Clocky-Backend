@@ -14,17 +14,22 @@ const router = express.Router();
 
 router.post('/clockout', async (req: any, res) => {
 	try {
-		const { username, code } = req.body;
+		const { username, code, project } = req.body;
 
 		await findUser(username, code);
 
 		const date = new Date().toISOString().split('T')[0];
 
-		const exists = await queryExistingClockIn(username, code, date);
+		const exists = await queryExistingClockIn(
+			username,
+			code,
+			project,
+			date,
+		);
 		if (!exists) throw new NotFoundError('Nog geen actieve dag');
 
 		const clockOut = new Date().toISOString();
-		await queryClockOut(username, code, date, clockOut);
+		await queryClockOut(username, code, project, date, clockOut);
 
 		return createResponseObject(
 			200,

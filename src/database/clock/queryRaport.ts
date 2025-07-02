@@ -36,14 +36,18 @@ function calculateWorkedTime(
 	return { hours, minutes };
 }
 
-export const queryRaport = async (username: string, code: string) => {
+export const queryRaport = async (
+	username: string,
+	code: string,
+	project: string,
+) => {
 	try {
 		await client.connect(); // Zorg dat client verbonden is
 
 		const records = await client
 			.db(database)
 			.collection('Clock')
-			.find({ username, code })
+			.find({ username, code, project })
 			.sort({ date: -1 })
 			.toArray();
 

@@ -10,13 +10,14 @@ const client = new MongoClient(uri);
 export const queryExistingClockIn = async (
 	username: string,
 	code: string,
+	project: string,
 	date: string,
 ): Promise<Clock | unknown> => {
 	try {
 		const clock = await client
 			.db(database)
 			.collection('Clock')
-			.findOne({ username, code, date });
+			.findOne({ username, code, project, date });
 		return clock;
 	} catch (error) {
 		throw error;

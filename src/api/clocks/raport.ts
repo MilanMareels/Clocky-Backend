@@ -7,9 +7,9 @@ const router = express.Router();
 
 router.get('/clock/:username/:code', async (req, res) => {
 	try {
-		const { username, code } = req.params;
+		const { username, code, project } = req.params;
 
-		const records = await queryRaport(username, code);
+		const records = await queryRaport(username, code, project);
 
 		return createResponseObject(200, records, res);
 	} catch (error) {
