@@ -76,6 +76,7 @@ export const queryRaport = async (
 		const totalRemainMinutes = totalMinutes % 60;
 
 		return {
+			project: project,
 			days: enhancedRecords,
 			totalWorked: `${totalHours}u ${totalRemainMinutes}m`,
 		};
