@@ -5,7 +5,7 @@ import { queryRaport } from '../../database/clock/queryRaport';
 
 const router = express.Router();
 
-router.get('/clock/:username/:code', async (req, res) => {
+router.get('/clock/:username/:code/:project', async (req, res) => {
 	try {
 		const { username, code, project } = req.params;
 

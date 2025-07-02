@@ -3,7 +3,6 @@ import express from 'express';
 import clockIn from './clocks/clockIn';
 import clockOut from './clocks/clockOut';
 import raport from './clocks/raport';
-import status from './clocks/status';
 import startBreak from './clocks/startBreak';
 import endBreak from './clocks/endBreak';
 
@@ -31,7 +30,6 @@ router.get('/', async (req, res) => {
 router.use(clockIn);
 router.use(clockOut);
 router.use(raport);
-router.use(status);
 router.use(startBreak);
 router.use(endBreak);
 
